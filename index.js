@@ -2,6 +2,7 @@ var allTiles = [];
 var selectedTiles = [];
 var gameWon = false;
 var gameStart = false;
+var swaps = 0;
 
 function initialize() {
     cutPieces();
@@ -45,9 +46,7 @@ function cutPieces() {
 
     img.crossOrigin = 'anonymous';
     //image src is whatever you want
-    img.src = 'https://external-preview.redd.it/aSQl8u43zYPhUuX1gyVOQpYwVUeE8jFgdJ2rwFdjTgY.png?width=960&crop=smart&auto=webp&v=enabled&s=5997e3a965c12fbf3255c3984d5bc79a2a4a874e'
-    //img.src = 'https://cdn2.unrealengine.com/amoguslandscape-2560x1440-2c59395f3208.jpg'
-    //img.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Massey_Ferguson_175_red_tractor_September_2005.jpg/800px-Massey_Ferguson_175_red_tractor_September_2005.jpg';
+    img.src = "images/bridge.jpg"
 }
 
 function populateGrid(imagePieces) {
