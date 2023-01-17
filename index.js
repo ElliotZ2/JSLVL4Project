@@ -45,7 +45,6 @@ function cutPieces() {
     }
 
     img.crossOrigin = 'anonymous';
-    //image src is whatever you want
     img.src = "images/bridge.jpg"
 }
 
@@ -84,6 +83,8 @@ function populateGrid(imagePieces) {
 
 function shuffle() {
     let positions = [];
+    swaps = 0;
+    updateSwaps();
     while (positions.length < 16) {
         let random = Math.floor(Math.random() * 16) + 1;
         if (!positions.includes(random)) {
@@ -97,6 +98,7 @@ function shuffle() {
         console.log(index);
     }
     gameStart = true;
+    gameWon = false;
 }
 
 function tileClick(tile) {
@@ -108,6 +110,7 @@ function tileClick(tile) {
     }
     if(selectedTiles.includes(tile)) {
         selectedTiles = [];
+        applySelectedOutline();
         return;
     }
     selectedTiles.push(tile);
@@ -118,8 +121,12 @@ function tileClick(tile) {
         grid.replaceChild(selectedTiles[1], selectedTiles[0]);
         grid.replaceChild(selectedTiles[0], placeHolder);
         selectedTiles=[];
+        swaps++;
+        console.log(swaps);
+        updateSwaps();
         checkForWin();
     }
+    applySelectedOutline();
 }
 
 function checkForWin() {
@@ -139,5 +146,22 @@ function checkForWin() {
     if(increasing) {
         console.log("win");
         gameWon = true;
+        document.getElementById('instructions').innerHTML = "Congrats, You Win!<br>Swaps: " + swaps;
+    }
+}
+
+function updateSwaps() {
+    let instructions = document.getElementById("instructions");
+    instructions.innerHTML = "Swaps: " + swaps;
+}
+
+function applySelectedOutline() {
+    for(tile of allTiles) {
+        if(tile.classList.contains('selected')) {
+            tile.classList.remove('selected');
+        }
+    }
+    for(tile of selectedTiles) {
+        tile.classList.add('selected');
     }
 }

@@ -6,12 +6,8 @@ body{
 h1{
     text-align: center;
     font-size: 35px;
-    background-image: linear-gradient(180deg,#ffa10c, #ff4360, #ff0e93, #8730ff);
+    color: white;
     background-size: 50%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -40,6 +36,16 @@ img {
 #grid img{
     max-width: 100%;
     max-height: 100%;
+}
+
+#grid .selected{
+    outline: 2px solid whitesmoke;
+}
+
+#buttonwrapper{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 p{
